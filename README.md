@@ -8,7 +8,7 @@
 
 ## 数据集下载
 
-本项目使用搜狗实验室开放的搜狐新闻数据(SogouCS)的完整包，下载地址：[搜狐新闻数据](https://www.runoob.com)，下载后将文件重命名为：```news_sohusite_xml.txt``` 放入项目文件夹中
+本项目使用搜狗实验室开放的搜狐新闻数据(SogouCS)的完整包，下载地址：[搜狐新闻数据](http://www.sogou.com/labs/resource/cs.php)，下载后将文件重命名为：```news_sohusite_xml.txt``` 放入项目文件夹中
 
 ## 项目运行
 
