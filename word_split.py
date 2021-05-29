@@ -22,10 +22,10 @@ data['title'] = title
 
 df = pd.DataFrame(data)
 # 更换标题
-df.replace(['auto','business','it','pic.health','sports','learning','club.mil.news','yule','media','gongyi'],['汽车','财经','IT','健康','体育','教育','军事','娱乐','传媒','公益'],inplace = True)
+df.replace(['auto','business','it','sports','learning','club.mil.news','yule'],['汽车','财经','IT','体育','教育','军事','娱乐'],inplace = True)
 
 
-cate = ['汽车','财经','IT','健康','体育','教育','军事','娱乐','传媒','公益']
+cate = ['汽车','财经','IT','体育','教育','军事','娱乐']
 
 df_labeled = {}
 df_labeled['category'] = []
@@ -53,7 +53,7 @@ for t in range(len(cate)):
 # print(df_labeled)
 
 # 输出总分类个数
-print('totol = %s'% df['category'].count())
+print('文章总数 = %s'% df['category'].count())
 for t in range(len(cate)):
     bool = df['category'].str.contains(cate[t])
     df_bool = df[bool]
@@ -61,18 +61,18 @@ for t in range(len(cate)):
     print("%s = %s"%(cate[t],df_bool['category'].count()))
 
 # 抽取训练样本
-train_num = 30000
+train_num = 20000
 df_train = df_labeled.sample(n = train_num,axis=0)
 # print(df_train)
 #抽取测试样本
-test_num = 30
+test_num = 5000
 df_test = df_labeled.sample(n = test_num,axis=0)
 # print(df_test)
 
 
 
 #stop_list:停用词
-stop_list=['［ ','「','」','］','．']
+stop_list=[]
 
 #训练样本文件
 train_title = open('train_title.txt',"w",encoding='utf-8')
@@ -82,7 +82,7 @@ test_title = open('test_title.txt',"w",encoding='utf-8')
 test_category = open('test_category.txt',"w",encoding='utf-8')
 
 #停用词文件
-stopwords = open('cn_stopwords.txt',"r",encoding='utf-8')
+stopwords = open('hit_stopwords.txt',"r",encoding='utf-8')
 for line in stopwords.readlines():
     stop_list.append(line.replace('\n', ''))
 
@@ -134,6 +134,3 @@ for index,row in df_test.iterrows():
     if t_c_num < test_num:
         test_category.write('\n')
 test_category.close()
-
-
-
